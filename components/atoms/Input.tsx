@@ -1,4 +1,4 @@
-import { forwardRef, useState } from 'react';
+import { forwardRef, useState, type ComponentRef } from 'react';
 import { StyleSheet, TextInput, View, type TextInputProps } from 'react-native';
 
 import { BrandColors, Fonts, Radius } from '@/constants/brand';
@@ -6,7 +6,7 @@ import { Text } from './Text';
 
 type Props = TextInputProps & { label?: string; error?: string | null };
 
-export const Input = forwardRef<TextInput, Props>(function Input({ label, error, style, onFocus, onBlur, ...rest }, ref) {
+export const Input = forwardRef<ComponentRef<typeof TextInput>, Props>(function Input({ label, error, style, onFocus, onBlur, ...rest }, ref) {
   const [focused, setFocused] = useState(false);
   return (
     <View style={styles.wrap}>
