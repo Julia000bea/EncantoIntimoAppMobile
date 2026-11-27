@@ -10,7 +10,7 @@ type IconName = React.ComponentProps<typeof Ionicons>['name'];
 
 const icon = (active: IconName, inactive: IconName) =>
   function TabIcon({ color, size, focused }: { color: import('react-native').ColorValue; size: number; focused: boolean }) {
-    return <Ionicons name={focused ? active : inactive} size={size} color={color} />;
+    return <Ionicons name={focused ? active : inactive} size={size} color={color as string} />;
   };
 
 export default function TabsLayout() {
