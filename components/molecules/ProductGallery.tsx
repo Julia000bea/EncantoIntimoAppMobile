@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { FlatList, Pressable, StyleSheet, View, type NativeScrollEvent, type NativeSyntheticEvent } from 'react-native';
+import { FlatList, Pressable, type ImageSourcePropType, StyleSheet, View, type NativeScrollEvent, type NativeSyntheticEvent } from 'react-native';
 
 import { BrandColors, Radius } from '@/constants/brand';
 import type { Product } from '@/types';
@@ -14,8 +14,8 @@ export function ProductGallery({ product, overlay }: { product: Product; overlay
   const listRef = useRef<FlatList>(null);
 
   const slides = product.images?.length
-    ? product.images.map((u) => ({ tint: product.tint, url: u }))
-    : SHADES.map((s) => ({ tint: s ? `${product.tint}${s}` : product.tint, url: undefined as string | undefined }));
+    ? product.images.map((src) => ({ tint: product.tint, src }))
+    : SHADES.map((s) => ({ tint: s ? `${product.tint}${s}` : product.tint, src: undefined as ImageSourcePropType | undefined }));
 
   const onScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     if (!width) return;
@@ -41,7 +41,7 @@ export function ProductGallery({ product, overlay }: { product: Product; overlay
             onScroll={onScroll}
             scrollEventThrottle={16}
             renderItem={({ item }) => (
-              <ProductImage tint={item.tint} imageUrl={item.url} iconSize={96} style={{ width, height: width * 1.05 }} label={product.name} />
+              <ProductImage tint={item.tint} source={item.src} iconSize={96} style={{ width, height: width * 1.05 }} label={product.name} />
             )}
           />
         ) : (
@@ -63,7 +63,7 @@ export function ProductGallery({ product, overlay }: { product: Product; overlay
             onPress={() => goTo(i)}
             style={[styles.thumb, i === index && styles.thumbActive]}
           >
-            <ProductImage tint={s.tint} imageUrl={s.url} iconSize={22} style={StyleSheet.absoluteFill} />
+            <ProductImage tint={s.tint} source={s.src} iconSize={22} style={StyleSheet.absoluteFill} />
           </Pressable>
         ))}
       </View>

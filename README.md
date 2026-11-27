@@ -2,7 +2,7 @@
 
 Aplicativo de compras da loja de lingerie **Encanto Íntimo**, feito com **React Native + Expo (Expo Router) + TypeScript**. Funciona em Android, iOS e web a partir do mesmo código.
 
-> **Versão de demonstração.** Os produtos, preços, estoque e o pagamento são **fictícios**. Nenhuma cobrança é feita e nenhum pedido é entregue. Veja "Do protótipo à loja real" abaixo.
+> **Versão de demonstração.** Os produtos, preços, estoque, fotos (ilustrações) e o pagamento são **fictícios**. Nenhuma cobrança é feita e nenhum pedido é entregue. Veja "Do protótipo à loja real" abaixo.
 
 ## Como rodar
 
@@ -59,7 +59,8 @@ Identidade visual: paleta creme/rosé/nude, fontes Fraunces (títulos) e Work Sa
 
 ## Do protótipo à loja real
 
-1. **Catálogo:** troque `data/products.ts` pelos produtos reais. Para fotos, preencha `imageUrl` e `images` de cada produto (hoje aparece um espaço colorido no lugar da foto).
+1. **Catálogo:** troque `data/products.ts` pelos produtos reais.
+   **Fotos:** hoje cada produto usa 3 ilustrações de demonstração (`assets/products/p{id}-1.jpg` a `p{id}-3.jpg`). Para usar as fotos reais da loja, basta salvar as fotos com esses mesmos nomes na pasta `assets/products/` (proporção ideal 600×690 px). Para mais de 3 fotos ou fotos hospedadas na internet, edite `data/product-images.ts` (aceita `require(...)` ou `{ uri: 'https://...' }`).
 2. **API:** reescreva as funções de `services/api.ts` com `fetch` para o seu servidor e leve também login, pedidos e endereços para lá. Hoje tudo fica salvo no próprio aparelho (AsyncStorage).
 3. **Login seguro:** neste protótipo a conta existe só no aparelho e a senha é guardada com um hash simples. Em produção a autenticação precisa ficar em um servidor.
 4. **Pagamento:** integre um provedor (ex.: Mercado Pago, Pagar.me ou Stripe). O app nunca deve guardar dados de cartão; a tela atual só valida o formato dos campos.

@@ -15,7 +15,7 @@ export function CartItem({ line }: { line: CartDetailed }) {
   return (
     <View style={styles.card}>
       <Pressable onPress={() => router.push({ pathname: '/product/[id]', params: { id: p.id } })}>
-        <ProductImage tint={p.tint} imageUrl={p.imageUrl} iconSize={30} style={styles.image} label={p.name} />
+        <ProductImage tint={p.tint} source={p.images?.[0]} iconSize={30} style={styles.image} label={p.name} />
       </Pressable>
       <View style={styles.body}>
         <View style={styles.top}>

@@ -13,6 +13,7 @@ import { Screen } from '@/components/molecules/Screen';
 import { TotalsBox } from '@/components/molecules/TotalsBox';
 import { BrandColors, Radius } from '@/constants/brand';
 import { STATUS_FLOW, STATUS_LABEL, useApp } from '@/store/AppContext';
+import { PRODUCTS } from '@/data/products';
 import { formatBRL, formatDateTime } from '@/utils/format';
 
 const PAYMENT_LABEL = { cartao: 'Cartão', pix: 'Pix', outras: 'Outras formas' } as const;
@@ -64,7 +65,7 @@ export default function PedidoDetalhe() {
       <View style={{ gap: 10 }}>
         {order.items.map((it, i) => (
           <View key={i} style={[styles.card, { flexDirection: 'row', gap: 12 }]}>
-            <ProductImage tint={it.tint} iconSize={24} style={{ width: 60, height: 70, borderRadius: Radius.md }} />
+            <ProductImage tint={it.tint} source={PRODUCTS.find((p) => p.id === it.productId)?.images?.[0]} iconSize={24} style={{ width: 60, height: 70, borderRadius: Radius.md }} />
             <View style={{ flex: 1, gap: 2 }}>
               <Text variant="label" numberOfLines={2}>{it.name}</Text>
               <Text variant="caption">Tamanho {it.size} · {it.color} · {it.quantity}x</Text>

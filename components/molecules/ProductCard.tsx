@@ -21,7 +21,7 @@ export function ProductCard({ product, width }: { product: Product; width?: numb
       style={[styles.card, width ? { width } : { flex: 1 }]}
     >
       <View>
-        <ProductImage tint={product.tint} imageUrl={product.imageUrl} style={styles.image} label={product.name} />
+        <ProductImage tint={product.tint} source={product.images?.[0]} style={styles.image} label={product.name} />
         {off ? (
           <View style={styles.topLeft}>
             <Badge label={`-${off}%`} tone="rose" />

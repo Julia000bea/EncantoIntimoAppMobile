@@ -1,3 +1,5 @@
+import type { ImageSourcePropType } from 'react-native';
+
 export type CategoryId = 'lingeries' | 'sutias' | 'calcinhas' | 'conjuntos' | 'pijamas' | 'bodies' | 'outros';
 
 export type Category = {
@@ -21,8 +23,7 @@ export type Product = {
   sold: number; // para ordenar por "mais vendidos"
   order: number; // maior = mais recente
   tint: string; // cor do placeholder (até existirem fotos reais)
-  imageUrl?: string; // quando a loja fornecer fotos reais
-  images?: string[]; // galeria de fotos reais
+  images?: ImageSourcePropType[]; // galeria de fotos (a primeira é a capa)
 };
 
 export type CartLine = {
